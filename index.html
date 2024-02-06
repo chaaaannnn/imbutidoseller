@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="styles.css">
+        <style>
+            /* Add a style for the 'yesButton' to set initial size */
+            #yesButton {
+                transition: 0.5s;
+            }
+        </style>
+    </head> 
+    <body>
+        <div class="container">
+            <div >
+                <h1 class = "header_text">Would you be my VALENTIINE</h1>
+            </div>
+            <div class="gif_container">
+                <img id='image' src="cat-kitty.gif" alt="Cute animated illustration">
+            </div>
+            <div class = "buttons">
+                <button class="btn" id = "yesButton" onclick="nextPage()">Yes</button>
+                <button class="btn" id="noButton" onmouseover="moveButton()">No</button>
+                <script>
+                    function nextPage() {
+                        var yesButton = document.getElementById('yesButton');
+                        // Increase the size of the 'yesButton'
+                        var currentSize = parseFloat(getComputedStyle(yesButton).fontSize);
+                        yesButton.style.fontSize = currentSize + 5 + 'px';
+                        window.location.href = "Sunflower/index.html";
+                    }
+                    function moveButton() {
+                        // Increase the size of the 'yesButton'
+                        var yesButton = document.getElementById('yesButton');
+                        var currentSize = parseFloat(getComputedStyle(yesButton).fontSize);
+                        yesButton.style.fontSize = currentSize + 5 + 'px';
+
+                        // Define constraints
+                        var maxWidth = 600;
+                        var maxHeight = 600;
+
+                        // Calculate random position within the 600x600 space
+                        var x = Math.random() * (maxWidth - document.getElementById('noButton').offsetWidth);
+                        var y = Math.random() * (maxHeight - document.getElementById('noButton').offsetHeight);
+                        
+                        // Ensure the button stays within the constraints
+                        x = Math.min(Math.max(x, 0), maxWidth);
+                        y = Math.min(Math.max(y, 0), maxHeight);
+
+                        // Set the new position of the 'noButton'
+                        document.getElementById('noButton').style.left = `${x}px`;
+                        document.getElementById('noButton').style.top = `${y}px`;
+
+                       
+                        // Change text every time the button is moved
+                        var textOptions = [
+                            "Are you sure?",
+                            "No doubts?",
+                            "Really no?",
+                            'Absolutely sure?',
+                            'Positive about that?',
+                            'No room for reconsideration?',
+                            'Not a shred of doubt?',
+                            'Completely ruling it out?',
+                            'Absolutely, unequivocally no?',
+                            'No chance of changing your mind?',
+                            'Are you firm on that decision?',
+                            'No second thoughts?',
+                            '100% certain?',
+                            'Without a hint of hesitation?',
+                            'No possibility of a yes?',
+                            'No wavering on your stance?',
+                            'Absolutely, resolutely no?',
+                            'No room for a maybe?',
+                            // Add more text options as needed
+                        ];
+
+                        // Randomly select a text option
+                        var randomText = textOptions[Math.floor(Math.random() * textOptions.length)];
+
+                        // Change the text of the 'noButton'
+                        noButton.innerText = randomText;
+
+                        
+                        // Array of different image paths
+                        var imagePaths = [
+                            'images/1.gif',
+                            'images/2.gif',
+                            'images/3.gif',
+                            'images/4.gif',
+                            'images/5.gif',
+                            'images/6.gif',
+                            'images/7.gif',
+                            'images/8.gif',
+                            'images/9.gif',
+                            // Add more paths as needed
+                        ];
+
+                        // Randomly select an image path
+                        var randomImagePath = imagePaths[Math.floor(Math.random() * imagePaths.length)];
+
+                        // Create and display the random image
+                        var image = document.createElement('img');
+                        image.src = randomImagePath;
+                        image.style.position = 'absolute';
+                        var imageX = Math.random() * (window.innerWidth - image.width);
+                        var imageY = Math.random() * (window.innerHeight - image.height);
+                        image.style.left = `${imageX}px`;
+                        image.style.top = `${imageY}px`;
+                        image.style.zIndex = 0;
+
+                        document.body.appendChild(image);
+
+                        // Optionally, remove the image after a certain delay
+                        setTimeout(() => {
+                            document.body.removeChild(image);
+                        }, 3000); // Adjust the delay (in milliseconds) as needed
+                    }
+                    
+                </script> 
+            </div>
+        </div>
+       
+    </body> 
+</html>
